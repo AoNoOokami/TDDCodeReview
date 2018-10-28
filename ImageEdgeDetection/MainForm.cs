@@ -75,108 +75,11 @@ namespace ImageEdgeDetection
                 }
                 else if (sender.Equals("cmbEdge"))
                 {
-                    switch (cmbEdgeDetection.SelectedItem.ToString())
-                    {
-                        case "None":
-                            bitmapResult = selectedSource;
-                            break;
-                        case "Laplacian 3x3":
-                            bitmapResult = selectedSource.Laplacian3x3Filter(false);
-                            break;
-                        case "Laplacian 3x3 Grayscale":
-                            bitmapResult = selectedSource.Laplacian3x3Filter(true);
-                            break;
-                        case "Laplacian 5x5":
-                            bitmapResult = selectedSource.Laplacian5x5Filter(false);
-                            break;
-                        case "Laplacian 5x5 Grayscale":
-                            bitmapResult = selectedSource.Laplacian5x5Filter(true);
-                            break;
-                        case "Laplacian of Gaussian":
-                            bitmapResult = selectedSource.LaplacianOfGaussianFilter();
-                            break;
-                        case "Laplacian 3x3 of Gaussian 3x3":
-                            bitmapResult = selectedSource.Laplacian3x3OfGaussian3x3Filter();
-                            break;
-                        case "Laplacian 3x3 of Gaussian 5x5 - 1":
-                            bitmapResult = selectedSource.Laplacian3x3OfGaussian5x5Filter1();
-                            break;
-                        case "Laplacian 3x3 of Gaussian 5x5 - 2":
-                            bitmapResult = selectedSource.Laplacian3x3OfGaussian5x5Filter2();
-                            break;
-                        case "Laplacian 5x5 of Gaussian 3x3":
-                            bitmapResult = selectedSource.Laplacian5x5OfGaussian3x3Filter();
-                            break;
-                        case "Laplacian 5x5 of Gaussian 5x5 - 1":
-                            bitmapResult = selectedSource.Laplacian5x5OfGaussian5x5Filter1();
-                            break;
-                        case "Laplacian 5x5 of Gaussian 5x5 - 2":
-                            bitmapResult = selectedSource.Laplacian5x5OfGaussian5x5Filter2();
-                            break;
-                        case "Sobel 3x3":
-                            bitmapResult = selectedSource.Sobel3x3Filter(false);
-                            break;
-                        case "Sobel 3x3 Grayscale":
-                            bitmapResult = selectedSource.Sobel3x3Filter();
-                            break;
-                        case "Prewitt":
-                            bitmapResult = selectedSource.PrewittFilter(false);
-                            break;
-                        case "Prewitt Grayscale":
-                            bitmapResult = selectedSource.PrewittFilter();
-                            break;
-                        case "Kirsch":
-                            bitmapResult = selectedSource.KirschFilter(false);
-                            break;
-                        case "Kirsch Grayscale":
-                            bitmapResult = selectedSource.KirschFilter();
-                            break;
-                    }
+                    cmbEdgeFilter();
                 }
                 else if (sender.Equals("cmbFilter"))
                 {
-                    switch (cmbFilter.SelectedItem.ToString())
-                    {
-                        case "None":
-                            bitmapResult = selectedSource;
-                            break;
-                        case "Night Filter":
-                            bitmapResult = selectedSource.NightFilter(false);
-                            break;
-                        case "Hell Filter":
-                            bitmapResult = selectedSource.HellFilter();
-                            break;
-                        case "Miami Filter":
-                            bitmapResult = selectedSource.MiamiFilter();
-                            break;
-                        case "Zen Filter":
-                            bitmapResult = selectedSource.ZenFilter();
-                            break;
-                        case "Black and White":
-                            bitmapResult = selectedSource.BlackWhiteFilter();
-                            break;
-                        case "Swap Filter":
-                            bitmapResult = selectedSource.SwapFilter();
-                            break;
-                        case "Crazy Filter":
-                            bitmapResult = selectedSource.CrazyFilter();
-                            break;
-                        case "Mega Filter Green":
-                            bitmapResult = selectedSource.MegaFilterGreen();
-                            break;
-                        case "Mega Filter Orange":
-                            bitmapResult = selectedSource.MegaFilterOrange();
-                            break;
-                        case "Mega Filter Pink":
-                            bitmapResult = selectedSource.MegaFilterPink();
-                            break;
-                        case "Mega Filter Custom":
-                            bitmapResult = selectedSource.MegaFilterCustom();
-                            break;
-                        case "Rainbow Filter":
-                            bitmapResult = selectedSource.RainbowFilter();
-                            break;
-                    }
+                    cmbImageFilter();
                 }
             }
             if (bitmapResult != null)
@@ -233,6 +136,113 @@ namespace ImageEdgeDetection
             cmbEdgeDetection.Visible = true;
         }
 
-        //TODO create cmbFilter and cmbEdge methods 
+        /* Apply Edge Filter according to cmbEdgeDetection value */
+        private void cmbEdgeFilter()
+        {
+            switch (cmbEdgeDetection.SelectedItem.ToString())
+            {
+                case "None":
+                    bitmapResult = selectedSource;
+                    break;
+                case "Laplacian 3x3":
+                    bitmapResult = selectedSource.Laplacian3x3Filter(false);
+                    break;
+                case "Laplacian 3x3 Grayscale":
+                    bitmapResult = selectedSource.Laplacian3x3Filter(true);
+                    break;
+                case "Laplacian 5x5":
+                    bitmapResult = selectedSource.Laplacian5x5Filter(false);
+                    break;
+                case "Laplacian 5x5 Grayscale":
+                    bitmapResult = selectedSource.Laplacian5x5Filter(true);
+                    break;
+                case "Laplacian of Gaussian":
+                    bitmapResult = selectedSource.LaplacianOfGaussianFilter();
+                    break;
+                case "Laplacian 3x3 of Gaussian 3x3":
+                    bitmapResult = selectedSource.Laplacian3x3OfGaussian3x3Filter();
+                    break;
+                case "Laplacian 3x3 of Gaussian 5x5 - 1":
+                    bitmapResult = selectedSource.Laplacian3x3OfGaussian5x5Filter1();
+                    break;
+                case "Laplacian 3x3 of Gaussian 5x5 - 2":
+                    bitmapResult = selectedSource.Laplacian3x3OfGaussian5x5Filter2();
+                    break;
+                case "Laplacian 5x5 of Gaussian 3x3":
+                    bitmapResult = selectedSource.Laplacian5x5OfGaussian3x3Filter();
+                    break;
+                case "Laplacian 5x5 of Gaussian 5x5 - 1":
+                    bitmapResult = selectedSource.Laplacian5x5OfGaussian5x5Filter1();
+                    break;
+                case "Laplacian 5x5 of Gaussian 5x5 - 2":
+                    bitmapResult = selectedSource.Laplacian5x5OfGaussian5x5Filter2();
+                    break;
+                case "Sobel 3x3":
+                    bitmapResult = selectedSource.Sobel3x3Filter(false);
+                    break;
+                case "Sobel 3x3 Grayscale":
+                    bitmapResult = selectedSource.Sobel3x3Filter();
+                    break;
+                case "Prewitt":
+                    bitmapResult = selectedSource.PrewittFilter(false);
+                    break;
+                case "Prewitt Grayscale":
+                    bitmapResult = selectedSource.PrewittFilter();
+                    break;
+                case "Kirsch":
+                    bitmapResult = selectedSource.KirschFilter(false);
+                    break;
+                case "Kirsch Grayscale":
+                    bitmapResult = selectedSource.KirschFilter();
+                    break;
+            }
+        }
+
+        /* Apply Image Filter according to cmbFilter value */
+        private void cmbImageFilter()
+        {
+            switch (cmbFilter.SelectedItem.ToString())
+            {
+                case "None":
+                    bitmapResult = selectedSource;
+                    break;
+                case "Night Filter":
+                    bitmapResult = selectedSource.NightFilter(false);
+                    break;
+                case "Hell Filter":
+                    bitmapResult = selectedSource.HellFilter();
+                    break;
+                case "Miami Filter":
+                    bitmapResult = selectedSource.MiamiFilter();
+                    break;
+                case "Zen Filter":
+                    bitmapResult = selectedSource.ZenFilter();
+                    break;
+                case "Black and White":
+                    bitmapResult = selectedSource.BlackWhiteFilter();
+                    break;
+                case "Swap Filter":
+                    bitmapResult = selectedSource.SwapFilter();
+                    break;
+                case "Crazy Filter":
+                    bitmapResult = selectedSource.CrazyFilter();
+                    break;
+                case "Mega Filter Green":
+                    bitmapResult = selectedSource.MegaFilterGreen();
+                    break;
+                case "Mega Filter Orange":
+                    bitmapResult = selectedSource.MegaFilterOrange();
+                    break;
+                case "Mega Filter Pink":
+                    bitmapResult = selectedSource.MegaFilterPink();
+                    break;
+                case "Mega Filter Custom":
+                    bitmapResult = selectedSource.MegaFilterCustom();
+                    break;
+                case "Rainbow Filter":
+                    bitmapResult = selectedSource.RainbowFilter();
+                    break;
+            }
+        }
     }
 }

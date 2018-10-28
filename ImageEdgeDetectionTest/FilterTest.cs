@@ -1,15 +1,12 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ImageEdgeDetection;
 using System.Drawing;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ImageEdgeDetection;
 using ImageEdgeDetectionTest.Properties;
 
 namespace ImageEdgeDetectionTest
 {
     [TestClass]
-    public class UnitTest1
+    public class FilterTest
     {
         //creation de wrapper pour le method test
         Wrapper wrapper = new Wrapper();
