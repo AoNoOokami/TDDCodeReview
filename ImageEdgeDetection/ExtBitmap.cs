@@ -566,7 +566,7 @@ namespace ImageEdgeDetection
         public static Bitmap RainbowFilter(this Bitmap sourceBitmap)
         {
             Bitmap resultBitmap = new Bitmap(sourceBitmap.Width, sourceBitmap.Height);
-            int raz = sourceBitmap.Height / 4;
+            int raz = sourceBitmap.Width / 4;
 
             for (int i = 0; i < sourceBitmap.Width; i++)
             {
