@@ -233,6 +233,6 @@ namespace ImageEdgeDetection
             cmbEdgeDetection.Visible = true;
         }
 
-        //TODO create cmbFilter and cmbEdge methods
+        //TODO create cmbFilter and cmbEdge methods 
     }
 }
