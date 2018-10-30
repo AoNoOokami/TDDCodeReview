@@ -16,6 +16,8 @@ namespace ImageEdgeDetection
 {
     public static class ExtBitmap
     {
+        private static Bitmap tempBitmap;
+        
         public static Bitmap CopyToSquareCanvas(this Bitmap sourceBitmap, int canvasWidthLenght)
         {
             float ratio = 1.0f;
@@ -86,7 +88,8 @@ namespace ImageEdgeDetection
             double red = 0.0;
 
             int filterWidth = filterMatrix.GetLength(1);
-            int filterHeight = filterMatrix.GetLength(0);
+           // dan: value never used 
+            // int filterHeight = filterMatrix.GetLength(0);
 
             int filterOffset = (filterWidth - 1) / 2;
             int calcOffset = 0;
