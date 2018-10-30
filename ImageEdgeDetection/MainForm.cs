@@ -17,6 +17,7 @@ namespace ImageEdgeDetection
         private Bitmap previewBitmap = null;
         private Bitmap bitmapResult = null;
         private Bitmap selectedSource = null;
+        private Bitmap imageFilterResult = null;
 
         private OpenFileDialog ofd = new OpenFileDialog();
         private SaveFileDialog sfd = new SaveFileDialog();
@@ -25,8 +26,8 @@ namespace ImageEdgeDetection
         public MainForm()
         {
             InitializeComponent();
-
-            cmbEdgeDetection.SelectedIndex = 0;
+            //TODO to delete
+           // cmbEdgeDetection.SelectedIndex = 0;
         }
 
         private void btnOpenOriginal_Click(object sender, EventArgs e)
@@ -43,57 +44,67 @@ namespace ImageEdgeDetection
 
                 previewBitmap = originalBitmap.CopyToSquareCanvas(picPreview.Width);
                 picPreview.Image = previewBitmap;
-                ApplyFilter(true, "Open");
+                //TODO not necessary
+                //ApplyFilter(true, "Open");
                 filterLabel.Visible = true;
                 cmbFilter.Visible = true;
                 btnSaveNewImage.Visible = true;
 
             }
+            //Todo have changed
+            picPreview.Image = originalBitmap;
+            previewBitmap = originalBitmap;
         }
 
-        private void ApplyFilter(bool preview, string sender)
+        private void ApplyFilter(string sender)
         {
             if (previewBitmap == null || cmbEdgeDetection.SelectedIndex == -1)
             {
                 return;
             }
+            //todo not necessary
+            /*if (preview == true)
+             {
+                 selectedSource = previewBitmap;
+             }
+             else
+             {
+                 selectedSource = originalBitmap;
+             }
+             */
 
-            if (preview == true)
-            {
-                selectedSource = previewBitmap;
-            }
-            else
-            {
-                selectedSource = originalBitmap;
-            }
+            selectedSource = previewBitmap;
 
             if (selectedSource != null)
             {
+                /*
                 if (sender.Equals("Open"))
                 {
                     bitmapResult = selectedSource;
-                }
-                else if (sender.Equals("cmbEdge"))
+                }  */
+                if (sender.Equals("cmbEdge"))
                 {
-                    cmbEdgeFilter();
+                   // TODO have replace this step in method ApplyEdgeDetection
+                    EdgeDetection();
                 }
                 else if (sender.Equals("cmbFilter"))
                 {
-                    cmbImageFilter();
+                    ColorFilter();
                 }
             }
             if (bitmapResult != null)
             {
-                if (preview == true)
-                {
+                //todo not necessary
+             //   if (preview == true)
+               // {
                     picPreview.Image = bitmapResult;
-                }
+                //}
             }
         }
 
         private void btnSaveNewImage_Click(object sender, EventArgs e)
         {
-            ApplyFilter(false, "Save");
+            ApplyFilter("Save");
             if (bitmapResult != null)
             {
                 sfd.Title = "Specify a file name and file path";
@@ -126,19 +137,29 @@ namespace ImageEdgeDetection
 
         private void NeighbourCountValueChangedEventHandler(object sender, EventArgs e)
         {
-            ApplyFilter(true, "cmbEdge");
+            
+                // if cmbEdgeDetection is 'None', method couldn't be applied
+                if (cmbEdgeDetection.SelectedItem.ToString() != "None")
+                    cmbFilter.Enabled = false;
+                else
+                    cmbFilter.Enabled = true;
+
+                ApplyFilter("cmbEdge");
         }
 
         private void FilterSelectedEventHandler(object sender, EventArgs e)
         {
-            ApplyFilter(true, "cmbFilter");
+            ApplyFilter("cmbFilter");
             edgeLabel.Visible = true;
             cmbEdgeDetection.Visible = true;
         }
 
         /* Apply Edge Filter according to cmbEdgeDetection value */
-        private void cmbEdgeFilter()
+        private void EdgeDetection()
         {
+            if (imageFilterResult != null)
+                selectedSource = imageFilterResult;
+
             switch (cmbEdgeDetection.SelectedItem.ToString())
             {
                 case "None":
@@ -199,48 +220,64 @@ namespace ImageEdgeDetection
         }
 
         /* Apply Image Filter according to cmbFilter value */
-        private void cmbImageFilter()
+        private void ColorFilter()
         {
+            if (imageFilterResult != null)
+                selectedSource = originalBitmap;
+
             switch (cmbFilter.SelectedItem.ToString())
             {
                 case "None":
                     bitmapResult = selectedSource;
+                    imageFilterResult = null;
                     break;
                 case "Night Filter":
                     bitmapResult = selectedSource.NightFilter(false);
+                    imageFilterResult = bitmapResult;
                     break;
                 case "Hell Filter":
                     bitmapResult = selectedSource.HellFilter();
+                    imageFilterResult = bitmapResult;
                     break;
                 case "Miami Filter":
                     bitmapResult = selectedSource.MiamiFilter();
+                    imageFilterResult = bitmapResult;
                     break;
                 case "Zen Filter":
                     bitmapResult = selectedSource.ZenFilter();
+                    imageFilterResult = bitmapResult;
                     break;
                 case "Black and White":
                     bitmapResult = selectedSource.BlackWhiteFilter();
+                    imageFilterResult = bitmapResult;
                     break;
                 case "Swap Filter":
                     bitmapResult = selectedSource.SwapFilter();
+                    imageFilterResult = bitmapResult;
                     break;
                 case "Crazy Filter":
                     bitmapResult = selectedSource.CrazyFilter();
+                    imageFilterResult = bitmapResult;
                     break;
                 case "Mega Filter Green":
                     bitmapResult = selectedSource.MegaFilterGreen();
+                    imageFilterResult = bitmapResult;
                     break;
                 case "Mega Filter Orange":
                     bitmapResult = selectedSource.MegaFilterOrange();
+                    imageFilterResult = bitmapResult;
                     break;
                 case "Mega Filter Pink":
                     bitmapResult = selectedSource.MegaFilterPink();
+                    imageFilterResult = bitmapResult;
                     break;
                 case "Mega Filter Custom":
                     bitmapResult = selectedSource.MegaFilterCustom();
+                    imageFilterResult = bitmapResult;
                     break;
                 case "Rainbow Filter":
                     bitmapResult = selectedSource.RainbowFilter();
+                    imageFilterResult = bitmapResult;
                     break;
             }
         }

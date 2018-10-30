@@ -12,10 +12,6 @@ namespace ImageEdgeDetection
     /// </summary>
     public class Wrapper
     {
-        public Wrapper()
-        {
-            
-        }
         //Test KirschFilter Edge Detection
         public Bitmap KirschFilter(Bitmap image)
         {

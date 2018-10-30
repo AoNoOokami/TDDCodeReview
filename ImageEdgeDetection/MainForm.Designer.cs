@@ -103,6 +103,8 @@
             this.cmbEdgeDetection.Size = new System.Drawing.Size(340, 37);
             this.cmbEdgeDetection.TabIndex = 20;
             this.cmbEdgeDetection.Visible = false;
+            //TODO added it
+            this.cmbEdgeDetection.SelectedIndex = 0;
             this.cmbEdgeDetection.SelectedIndexChanged += new System.EventHandler(this.NeighbourCountValueChangedEventHandler);
             // 
             // cmbFilter
@@ -129,6 +131,8 @@
             this.cmbFilter.Size = new System.Drawing.Size(340, 37);
             this.cmbFilter.TabIndex = 20;
             this.cmbFilter.Visible = false;
+            //todo added it
+            this.cmbFilter.SelectedIndex = 0;
             this.cmbFilter.SelectedIndexChanged += new System.EventHandler(this.FilterSelectedEventHandler);
             // 
             // filterLabel
