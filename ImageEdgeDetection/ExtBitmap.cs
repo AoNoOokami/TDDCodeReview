@@ -323,7 +323,6 @@ namespace ImageEdgeDetection
 
             Bitmap temp = new Bitmap(bmp.Width, bmp.Height);
 
-
             for (int i = 0; i < bmp.Width; i++)
             {
                 for (int x = 0; x < bmp.Height; x++)
@@ -645,12 +644,12 @@ namespace ImageEdgeDetection
             return temp;
         }
 
-        public static void CompareTwoImages(Bitmap img1, Bitmap img2)
+        public static bool CompareTwoImages(Bitmap img1, Bitmap img2)
         {
             if (img1.Size != img2.Size)
             {
                 Console.Error.WriteLine("Images are of different sizes");
-                return;
+                return false;
             }
 
             float diff = 0;
@@ -664,7 +663,15 @@ namespace ImageEdgeDetection
                     diff += (float)Math.Abs(img1.GetPixel(x, y).B - img2.GetPixel(x, y).B) / 255;
                 }
             }
-        }
 
+            if (diff == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 }

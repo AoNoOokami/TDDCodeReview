@@ -33,9 +33,9 @@ namespace ImageEdgeDetection
             return ExtBitmap.Laplacian3x3Filter(sourceBitmap, grayscale);
         }
         //Test if the generated method and the test method matches to control results
-        public void CompareTwoImages(Bitmap img1, Bitmap img2)
+        public bool CompareTwoImages(Bitmap img1, Bitmap img2)
         {
-            ExtBitmap.CompareTwoImages(img1, img2);
+            return ExtBitmap.CompareTwoImages(img1, img2);
         }
     }
 }
