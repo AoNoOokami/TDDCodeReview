@@ -39,21 +39,29 @@ namespace ImageEdgeDetection
             if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 StreamReader streamReader = new StreamReader(ofd.FileName);
-                originalBitmap = (Bitmap)Bitmap.FromStream(streamReader.BaseStream);
+                originalBitmap = (Bitmap) Bitmap.FromStream(streamReader.BaseStream);
                 streamReader.Close();
 
                 previewBitmap = originalBitmap.CopyToSquareCanvas(picPreview.Width);
                 picPreview.Image = previewBitmap;
                 //TODO not necessary
-                //ApplyFilter(true, "Open");
+
                 filterLabel.Visible = true;
                 cmbFilter.Visible = true;
                 btnSaveNewImage.Visible = true;
 
             }
+
             //Todo have changed
-            picPreview.Image = originalBitmap;
-            previewBitmap = originalBitmap;
+            if (previewBitmap == null)
+            {
+                picPreview.Image = originalBitmap;
+                previewBitmap = originalBitmap;
+            }
+            else
+            {
+                ApplyFilter("Open");
+            }
         }
 
         private void ApplyFilter(string sender)
@@ -77,11 +85,12 @@ namespace ImageEdgeDetection
 
             if (selectedSource != null)
             {
-                /*
+                
                 if (sender.Equals("Open"))
                 {
-                    bitmapResult = selectedSource;
-                }  */
+                    ColorFilter();
+                    EdgeDetection();
+                }  
                 if (sender.Equals("cmbEdge"))
                 {
                    // TODO have replace this step in method ApplyEdgeDetection
