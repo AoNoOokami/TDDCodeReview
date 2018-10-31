@@ -587,14 +587,11 @@ namespace ImageEdgeDetection
                     {
                         resultBitmap.SetPixel(i, x, Color.FromArgb(sourceBitmap.GetPixel(i, x).R, sourceBitmap.GetPixel(i, x).G, sourceBitmap.GetPixel(i, x).B / 5));
                     }
-                    else if (i < (raz * 4))
+                    else
                     {
                         resultBitmap.SetPixel(i, x, Color.FromArgb(sourceBitmap.GetPixel(i, x).R / 5, sourceBitmap.GetPixel(i, x).G, sourceBitmap.GetPixel(i, x).B / 5));
                     }
-                    else
-                    {
-                        resultBitmap.SetPixel(i, x, Color.FromArgb(sourceBitmap.GetPixel(i, x).R / 5, sourceBitmap.GetPixel(i, x).G / 5, sourceBitmap.GetPixel(i, x).B / 5));
-                    }
+
                 }
             }
             return resultBitmap;
