@@ -65,23 +65,8 @@ namespace ImageEdgeDetection
             Marshal.Copy(sourceData.Scan0, pixelBuffer, 0, pixelBuffer.Length);
             sourceBitmap.UnlockBits(sourceData);
 
-            if (grayscale == true)
-            {
-                float rgb = 0;
-
-                for (int k = 0; k < pixelBuffer.Length; k += 4)
-                {
-                    rgb = pixelBuffer[k] * 0.11f;
-                    rgb += pixelBuffer[k + 1] * 0.59f;
-                    rgb += pixelBuffer[k + 2] * 0.3f;
-
-
-                    pixelBuffer[k] = (byte)rgb;
-                    pixelBuffer[k + 1] = pixelBuffer[k];
-                    pixelBuffer[k + 2] = pixelBuffer[k];
-                    pixelBuffer[k + 3] = 255;
-                }
-            }
+            if (grayscale)
+                GrayscaleForConvolution(pixelBuffer);
 
             double blue = 0.0;
             double green = 0.0;
@@ -192,22 +177,8 @@ namespace ImageEdgeDetection
             Marshal.Copy(sourceData.Scan0, pixelBuffer, 0, pixelBuffer.Length);
             sourceBitmap.UnlockBits(sourceData);
 
-            if (grayscale == true)
-            {
-                float rgb = 0;
-
-                for (int k = 0; k < pixelBuffer.Length; k += 4)
-                {
-                    rgb = pixelBuffer[k] * 0.11f;
-                    rgb += pixelBuffer[k + 1] * 0.59f;
-                    rgb += pixelBuffer[k + 2] * 0.3f;
-
-                    pixelBuffer[k] = (byte)rgb;
-                    pixelBuffer[k + 1] = pixelBuffer[k];
-                    pixelBuffer[k + 2] = pixelBuffer[k];
-                    pixelBuffer[k + 3] = 255;
-                }
-            }
+            if (grayscale)
+                GrayscaleForConvolution(pixelBuffer);
 
             double blueX = 0.0;
             double greenX = 0.0;
@@ -315,6 +286,23 @@ namespace ImageEdgeDetection
             resultBitmap.UnlockBits(resultData);
 
             return resultBitmap;
+        }
+
+        private static void GrayscaleForConvolution(byte[] pixelBuffer)
+        {
+            float rgb = 0;
+
+            for (int k = 0; k < pixelBuffer.Length; k += 4)
+            {
+                rgb = pixelBuffer[k] * 0.11f;
+                rgb += pixelBuffer[k + 1] * 0.59f;
+                rgb += pixelBuffer[k + 2] * 0.3f;
+
+                pixelBuffer[k] = (byte)rgb;
+                pixelBuffer[k + 1] = pixelBuffer[k];
+                pixelBuffer[k + 2] = pixelBuffer[k];
+                pixelBuffer[k + 3] = 255;
+            }
         }
 
         //apply color filter at your own taste

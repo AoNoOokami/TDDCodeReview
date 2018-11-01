@@ -60,7 +60,7 @@
             this.btnOpenOriginal.TabIndex = 15;
             this.btnOpenOriginal.Text = "Load image";
             this.btnOpenOriginal.UseVisualStyleBackColor = true;
-            this.btnOpenOriginal.Click += new System.EventHandler(this.btnOpenOriginal_Click);
+            this.btnOpenOriginal.Click += new System.EventHandler(this.BtnOpenOriginal_Click);
             // 
             // btnSaveNewImage
             // 
@@ -69,7 +69,7 @@
             this.btnSaveNewImage.Name = "btnSaveNewImage";
             this.btnSaveNewImage.Size = new System.Drawing.Size(150, 123);
             this.btnSaveNewImage.TabIndex = 16;
-            this.btnSaveNewImage.Text = "Save Image";
+            this.btnSaveNewImage.Text = "Save image";
             this.btnSaveNewImage.UseVisualStyleBackColor = true;
             this.btnSaveNewImage.Visible = false;
             this.btnSaveNewImage.Click += new System.EventHandler(this.btnSaveNewImage_Click);
@@ -103,7 +103,6 @@
             this.cmbEdgeDetection.Size = new System.Drawing.Size(340, 37);
             this.cmbEdgeDetection.TabIndex = 20;
             this.cmbEdgeDetection.Visible = false;
-            //TODO added it
             this.cmbEdgeDetection.SelectedIndex = 0;
             this.cmbEdgeDetection.SelectedIndexChanged += new System.EventHandler(this.NeighbourCountValueChangedEventHandler);
             // 
@@ -131,7 +130,6 @@
             this.cmbFilter.Size = new System.Drawing.Size(340, 37);
             this.cmbFilter.TabIndex = 20;
             this.cmbFilter.Visible = false;
-            //todo added it
             this.cmbFilter.SelectedIndex = 0;
             this.cmbFilter.SelectedIndexChanged += new System.EventHandler(this.FilterSelectedEventHandler);
             // 

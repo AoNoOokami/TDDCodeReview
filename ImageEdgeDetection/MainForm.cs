@@ -26,11 +26,9 @@ namespace ImageEdgeDetection
         public MainForm()
         {
             InitializeComponent();
-            //TODO to delete
-           // cmbEdgeDetection.SelectedIndex = 0;
         }
 
-        private void btnOpenOriginal_Click(object sender, EventArgs e)
+        private void BtnOpenOriginal_Click(object sender, EventArgs e)
         {
             ofd.Title = "Select an image file.";
             ofd.Filter = "Png Images(*.png)|*.png|Jpeg Images(*.jpg)|*.jpg";
@@ -44,15 +42,11 @@ namespace ImageEdgeDetection
 
                 previewBitmap = originalBitmap.CopyToSquareCanvas(picPreview.Width);
                 picPreview.Image = previewBitmap;
-                //TODO not necessary
-
+     
                 filterLabel.Visible = true;
                 cmbFilter.Visible = true;
                 btnSaveNewImage.Visible = true;
-
             }
-
-            //Todo have changed
             if (previewBitmap == null)
             {
                 picPreview.Image = originalBitmap;
@@ -70,22 +64,10 @@ namespace ImageEdgeDetection
             {
                 return;
             }
-            //todo not necessary
-            /*if (preview == true)
-             {
-                 selectedSource = previewBitmap;
-             }
-             else
-             {
-                 selectedSource = originalBitmap;
-             }
-             */
-
             selectedSource = previewBitmap;
 
             if (selectedSource != null)
             {
-                
                 if (sender.Equals("Open"))
                 {
                     ColorFilter();
@@ -93,7 +75,6 @@ namespace ImageEdgeDetection
                 }  
                 if (sender.Equals("cmbEdge"))
                 {
-                   // TODO have replace this step in method ApplyEdgeDetection
                     EdgeDetection();
                 }
                 else if (sender.Equals("cmbFilter"))
@@ -103,11 +84,7 @@ namespace ImageEdgeDetection
             }
             if (bitmapResult != null)
             {
-                //todo not necessary
-             //   if (preview == true)
-               // {
-                    picPreview.Image = bitmapResult;
-                //}
+                picPreview.Image = bitmapResult;
             }
         }
 
@@ -146,7 +123,6 @@ namespace ImageEdgeDetection
 
         private void NeighbourCountValueChangedEventHandler(object sender, EventArgs e)
         {
-            
                 // if cmbEdgeDetection is 'None', method couldn't be applied
                 if (cmbEdgeDetection.SelectedItem.ToString() != "None")
                     cmbFilter.Enabled = false;
