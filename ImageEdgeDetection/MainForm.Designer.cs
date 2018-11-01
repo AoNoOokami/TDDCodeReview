@@ -58,7 +58,7 @@
             this.btnOpenOriginal.Name = "btnOpenOriginal";
             this.btnOpenOriginal.Size = new System.Drawing.Size(207, 123);
             this.btnOpenOriginal.TabIndex = 15;
-            this.btnOpenOriginal.Text = "Load PNG Image";
+            this.btnOpenOriginal.Text = "Load image";
             this.btnOpenOriginal.UseVisualStyleBackColor = true;
             this.btnOpenOriginal.Click += new System.EventHandler(this.btnOpenOriginal_Click);
             // 
